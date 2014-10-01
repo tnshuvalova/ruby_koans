@@ -6,17 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 class AboutAsserts < EdgeCase::Koan
 
   # We shall contemplate truth by testing reality, via asserts.
-  def test_assert_truth
-    #--
-    assert true                 # This should be true
-    if false
-    #++
-    assert false                # This should be true
-    #--
-    end
-    #++
-  end
-
+ 
   # Enlightenment may be more easily achieved with appropriate
   # messages.
   def test_assert_with_message
