@@ -13,11 +13,32 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # of the Proxy class is given in the AboutProxyObjectProject koan.
 
 class Proxy
+  def messages
+    @messages
+  end
+
   def initialize(target_object)
     @object = target_object
+    @messages = []
     # ADD MORE CODE HERE
   end
 
+  def method_missing(method_name, *args, &block)
+    @messages.push(method_name)
+    @object.send(method_name, *args)
+  end
+
+  def called?(method_name)
+    if @messages.include?(method_name)
+      true
+    else
+      false
+    end
+  end
+
+  def number_of_times_called(method_name)
+    @messages.count(method_name)
+  end
   # WRITE CODE HERE
 end
 
